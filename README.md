@@ -1,2 +1,5 @@
-# docker-php-apache-mysql
-Docker PHP Apache MySql project
+# Installation
+
+```shell
+docker-compose up -d
+```

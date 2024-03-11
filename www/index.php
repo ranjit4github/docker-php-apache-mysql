@@ -18,7 +18,7 @@
 
         <?php
         $conn = mysqli_connect('db', 'huy', 'huy', "myDb");
-        $query = 'SELECT * From Person';
+        $query = 'SELECT * From person';
         $result = mysqli_query($conn, $query);
         echo '<table class="table table-striped">';
         echo '<thead><tr><th></th><th>id</th><th>name</th></tr></thead>';

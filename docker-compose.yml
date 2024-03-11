@@ -12,14 +12,14 @@ services:
         networks:
             - default
     db:
-        image: mysql:5.7.28
+        image: mysql:8.3.0
         ports:
             - "3306:3306"
         environment:
             MYSQL_DATABASE: myDb
-            MYSQL_USER: ranjit
-            MYSQL_PASSWORD: ranjit
-            MYSQL_ROOT_PASSWORD: ranjit
+            MYSQL_USER: huy
+            MYSQL_PASSWORD: huy
+            MYSQL_ROOT_PASSWORD: huy
         volumes:
             - ./dump:/docker-entrypoint-initdb.d
             - persistent:/var/lib/mysql
@@ -32,9 +32,9 @@ services:
         ports:
             - 82:80
         environment:
-            MYSQL_USER: ranjit
-            MYSQL_PASSWORD: ranjit
-            MYSQL_ROOT_PASSWORD: ranjit
+            MYSQL_USER: huy
+            MYSQL_PASSWORD: huy
+            MYSQL_ROOT_PASSWORD: huy
 volumes:
     persistent:
 

@@ -1,12 +1,12 @@
 ---
-version: "2"
+version: "3.7"
 services:
-    www:
+    ui:
         build: .
         ports:
             - "80:80"
         volumes:
-            - ./www:/var/www/html/
+            - ./UI:/var/www/html/
         links:
             - db
         networks:
@@ -16,12 +16,15 @@ services:
         ports:
             - "3306:3306"
         environment:
-            MYSQL_DATABASE: myDb
-            MYSQL_USER: ranjit
-            MYSQL_PASSWORD: ranjit
-            MYSQL_ROOT_PASSWORD: ranjit
+            MYSQL_DATABASE: mbtech
+            MYSQL_USER: marlin
+            MYSQL_PASSWORD_FILE: /run/secrets/db_password
+            MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+        secrets:
+            - db_password
+            - db_root_password
         volumes:
-            - ./dump:/docker-entrypoint-initdb.d
+            - ./DB_Dump:/docker-entrypoint-initdb.d
             - persistent:/var/lib/mysql
         networks:
             - default
@@ -32,9 +35,17 @@ services:
         ports:
             - 82:80
         environment:
-            MYSQL_USER: ranjit
-            MYSQL_PASSWORD: ranjit
-            MYSQL_ROOT_PASSWORD: ranjit
+            MYSQL_USER: marlin
+            MYSQL_PASSWORD_FILE: /run/secrets/db_password
+            MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+        secrets:
+            - db_password
+            - db_root_password
+secrets:
+   db_password:
+     file: .secrets/db_password.txt
+   db_root_password:
+     file: .secrets/db_root_password.txt
 volumes:
     persistent:
 

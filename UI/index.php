@@ -15,7 +15,7 @@
 	<?php echo "<h3>This is Docker Compose Class!</h3>"; ?>
 
     <?php
-    $conn = mysqli_connect('db', 'ranjit', 'ranjit', "myDb");
+    $conn = mysqli_connect('db', 'marlin', 'Marlin@2024', "mbtech");
     $query = 'SELECT * From Person';
     $result = mysqli_query($conn, $query);
     echo '<table class="table table-striped">';
